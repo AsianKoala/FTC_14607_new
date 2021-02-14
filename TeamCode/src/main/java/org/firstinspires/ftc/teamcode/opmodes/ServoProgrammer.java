@@ -2,11 +2,11 @@ package org.firstinspires.ftc.teamcode.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.stupidrobot;
+import org.firstinspires.ftc.teamcode.control.stupidrobot;
 import org.openftc.revextensions2.ExpansionHubServo;
 
 @TeleOp(name = "servo prgrm")
-public class servoprogramer extends stupidrobot {
+public class ServoProgrammer extends stupidrobot {
     public double leftPivot = 0.5;
     public double rightPivot = 0.5;
     public ExpansionHubServo leftPivotServo, rightPivotServo;
