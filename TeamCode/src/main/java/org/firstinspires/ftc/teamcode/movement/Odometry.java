@@ -62,10 +62,10 @@ public class Odometry extends TwoTrackingWheelLocalizer {
 //    public static double PERPENDICULAR_X = -6.75;
 //    public static double PERPENDICULAR_Y = 4.25;
 
-    public static double PARALLEL_X = 6.75;
-    public static double PARALLEL_Y = 4.25;
-    public static double PERPENDICULAR_X = 6.75;
-    public static double PERPENDICULAR_Y = -4.25;
+    public static double PARALLEL_X = -6.75; // -6.75
+    public static double PARALLEL_Y = -4.25; // -4.25
+    public static double PERPENDICULAR_X = -6.75; // -6.75
+    public static double PERPENDICULAR_Y = -4.25; // 4.25
 
 
     public static Pose currentPosition;
@@ -87,9 +87,8 @@ public class Odometry extends TwoTrackingWheelLocalizer {
         parallelEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "intake"));
         perpendicularEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "intakeTransfer"));
 
-        // TODO: reverse any encoders using Encoder.setDirection(Encoder.Direction.REVERSE)
-//        parallelEncoder.setDirection(Encoder.Direction.REVERSE);
-//        perpendicularEncoder.setDirection(Encoder.Direction.REVERSE);
+        parallelEncoder.setDirection(Encoder.Direction.REVERSE);
+        perpendicularEncoder.setDirection(Encoder.Direction.REVERSE);
     }
 
     public static double encoderTicksToInches(double ticks) {

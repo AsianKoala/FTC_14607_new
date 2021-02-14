@@ -9,6 +9,7 @@ import net.frogbots.ftcopmodetunercommon.opmode.TunableOpMode;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.teamcode.hardware.Actuator;
 import org.firstinspires.ftc.teamcode.hardware.DriveTrain;
+import org.firstinspires.ftc.teamcode.hardware.Hardware;
 import org.firstinspires.ftc.teamcode.hardware.Intake;
 import org.firstinspires.ftc.teamcode.hardware.IntakeTransfer;
 import org.firstinspires.ftc.teamcode.hardware.Shooter;
@@ -36,6 +37,8 @@ public class Robot extends TunableOpMode {
 
     @Override
     public void init() {
+        Hardware.loadParentOpMode(this);
+
         ExpansionHubMotor frontLeft, frontRight, backLeft, backRight, intakeMotor, intakeTransferMotor, launcher1, launcher2;
         ExpansionHubServo actuatorServo, leftPivot, rightPivot, leftGrabber, rightGrabber;
         frontLeft = hardwareMap.get(ExpansionHubMotor.class, "FL");
@@ -58,6 +61,9 @@ public class Robot extends TunableOpMode {
         shooter = new Shooter(launcher1, launcher2);
         actuator = new Actuator(actuatorServo);
         wobbleGoal = new WobbleGoal(leftPivot, rightPivot, leftGrabber, rightGrabber);
+        odometry = new Odometry(hardwareMap);
+
+        initBNO055IMU(hardwareMap);
     }
 
     @Override

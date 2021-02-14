@@ -135,6 +135,7 @@ public class MainAuto extends Auto {
 
             if(timeCheck(2000)) {
                 nextState();
+                wobbleGoal.in();
             }
         }
 
@@ -158,7 +159,7 @@ public class MainAuto extends Auto {
             if(stateFinished) {
                 initStateVars();
             }
-            wobbleGoal.grab();
+            wobbleGoal.out();
             if(timeCheck(1000)) {
                 nextState();
             }
@@ -168,6 +169,7 @@ public class MainAuto extends Auto {
             if(stateFinished) {
                 initStateVars();
             }
+            wobbleGoal.grab();
             wobbleGoal.in();
             if (timeCheck(1000)) {
                 nextState();
