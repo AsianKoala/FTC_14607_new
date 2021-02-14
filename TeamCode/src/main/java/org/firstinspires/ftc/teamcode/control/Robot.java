@@ -10,21 +10,18 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.teamcode.hardware.Actuator;
 import org.firstinspires.ftc.teamcode.hardware.DriveTrain;
 import org.firstinspires.ftc.teamcode.hardware.Hardware;
-import org.firstinspires.ftc.teamcode.hardware.Intake;
-import org.firstinspires.ftc.teamcode.hardware.IntakeTransfer;
 import org.firstinspires.ftc.teamcode.hardware.Shooter;
 import org.firstinspires.ftc.teamcode.hardware.WobbleGoal;
 import org.firstinspires.ftc.teamcode.movement.Odometry;
 import org.firstinspires.ftc.teamcode.util.AxesSigns;
 import org.firstinspires.ftc.teamcode.util.BNO055IMUUtil;
 import org.firstinspires.ftc.teamcode.util.MathUtil;
+import org.firstinspires.ftc.teamcode.util.Pose;
 import org.openftc.revextensions2.ExpansionHubMotor;
 import org.openftc.revextensions2.ExpansionHubServo;
 
 public class Robot extends TunableOpMode {
     public DriveTrain driveTrain;
-    public Intake intake;
-    public IntakeTransfer intakeTransfer;
     public Shooter shooter;
     public Actuator actuator;
     public WobbleGoal wobbleGoal;
@@ -39,14 +36,12 @@ public class Robot extends TunableOpMode {
     public void init() {
         Hardware.loadParentOpMode(this);
 
-        ExpansionHubMotor frontLeft, frontRight, backLeft, backRight, intakeMotor, intakeTransferMotor, launcher1, launcher2;
+        ExpansionHubMotor frontLeft, frontRight, backLeft, backRight, launcher1, launcher2;
         ExpansionHubServo actuatorServo, leftPivot, rightPivot, leftGrabber, rightGrabber;
         frontLeft = hardwareMap.get(ExpansionHubMotor.class, "FL");
         frontRight = hardwareMap.get(ExpansionHubMotor.class, "FR");
         backLeft = hardwareMap.get(ExpansionHubMotor.class, "BL");
         backRight = hardwareMap.get(ExpansionHubMotor.class, "BR");
-        intakeMotor = hardwareMap.get(ExpansionHubMotor.class, "intake");
-        intakeTransferMotor = hardwareMap.get(ExpansionHubMotor.class, "intakeTransfer");
         launcher1 = hardwareMap.get(ExpansionHubMotor.class, "launcher1");
         launcher2 = hardwareMap.get(ExpansionHubMotor.class, "launcher2");
         actuatorServo = hardwareMap.get(ExpansionHubServo.class, "actuator");
@@ -56,13 +51,11 @@ public class Robot extends TunableOpMode {
         rightGrabber = hardwareMap.get(ExpansionHubServo.class, "rightGrabber");
 
         driveTrain = new DriveTrain(frontLeft, frontRight, backLeft, backRight);
-        intake = new Intake(intakeMotor);
-        intakeTransfer = new IntakeTransfer(intakeTransferMotor);
         shooter = new Shooter(launcher1, launcher2);
         actuator = new Actuator(actuatorServo);
         wobbleGoal = new WobbleGoal(leftPivot, rightPivot, leftGrabber, rightGrabber);
         odometry = new Odometry(hardwareMap);
-
+        odometry.setStart(new Pose(0,0,0));
         initBNO055IMU(hardwareMap);
     }
 
@@ -81,8 +74,6 @@ public class Robot extends TunableOpMode {
     public void loop() {
         telemetry.clear();
         driveTrain.update();
-        intake.update();
-        intakeTransfer.update();
         shooter.update();
         updateOdometryComponents();
     }

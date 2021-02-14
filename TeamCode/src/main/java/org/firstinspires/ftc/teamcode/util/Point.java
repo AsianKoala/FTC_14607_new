@@ -28,5 +28,4 @@ public class Point {
     public String toString() {
         return String.format("(%.1f, %.1f)", x, y);
     }
-
 }

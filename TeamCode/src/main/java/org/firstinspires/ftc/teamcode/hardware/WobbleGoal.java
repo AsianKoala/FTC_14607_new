@@ -9,8 +9,8 @@ public class WobbleGoal {
     private final double leftGrabberOpen = 0.25;
     private final double rightGrabberOpen = 0.6;
     private final double rightIn = 0.8;
-    private final double rightOut = 0.15;
-    private final double leftOut = 0.65;
+    private final double rightOut = 0.3;
+    private final double leftOut = 0.5;
     private final double leftIn = 0.0;
 
     public WobbleGoal(ExpansionHubServo leftPivot, ExpansionHubServo rightPivot, ExpansionHubServo leftGrabber, ExpansionHubServo rightGrabber) {

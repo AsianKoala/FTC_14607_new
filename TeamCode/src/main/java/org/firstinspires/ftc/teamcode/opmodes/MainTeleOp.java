@@ -32,49 +32,37 @@ public class MainTeleOp extends Robot {
     public void loop() {
         super.loop();
         controlJoystickMovement();
-        controlIntakePower();
-        controlShooterSequence();
+        controlShooter();
+        controlActuator();
         controlWobbleGoal();
         controlShootingMovement();
         telemetryVars();
     }
 
     public void controlJoystickMovement() {
-        double driveScale = 0.7 - (gamepad1.left_bumper ? 0.4 : 0);
+        double driveScale = 0.5 - (gamepad1.left_bumper ? 0.2 : 0);
         DriveTrain.movementY = -gamepad1.left_stick_y * driveScale;
         DriveTrain.movementX = gamepad1.left_stick_x * driveScale;
         DriveTrain.movementTurn = -gamepad1.right_stick_x * driveScale;
     }
 
-    public void controlIntakePower() {
-        if(gamepad1.right_bumper) {
-            intakeOn = !intakeOn;
+
+    private boolean shooterOn = false;
+    public void controlShooter() {
+        if(gamepad1.left_trigger > 0.7) {
+            shooterOn = !shooterOn;
         }
-        if(intakeOn) {
-            intake.turnOn();
-        } else {
-            intake.turnOff();
+        if(shooterOn) {
+            shooter.turnOn();
         }
     }
 
-    public void controlShooterSequence() {
-        if(gamepad1.left_trigger > 0.7) {
-            shootingStateMachine = true;
-            shootingStateMachineStartTime = System.currentTimeMillis();
-            shooter.turnOn();
+    public void controlActuator() {
+        if(gamepad1.a) {
+            actuator.push();
         }
-
-        if(shootingStateMachine) {
-            if(System.currentTimeMillis() - shootingStateMachineStartTime > 1000) { // rev time
-                actuatorStartTime = System.currentTimeMillis();
-                actuator.push();
-            }
-
-            if(System.currentTimeMillis() - actuatorStartTime > 1500) { // push time
-                actuator.reset();
-                shooter.turnOff();
-                shootingStateMachine = false;
-            }
+        if(gamepad1.b) {
+            actuator.reset();
         }
     }
 

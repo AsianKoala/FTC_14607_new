@@ -11,7 +11,6 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.util.MathUtil;
-import org.firstinspires.ftc.teamcode.util.Point;
 import org.firstinspires.ftc.teamcode.util.Pose;
 import org.jetbrains.annotations.NotNull;
 
@@ -62,11 +61,17 @@ public class Odometry extends TwoTrackingWheelLocalizer {
 //    public static double PERPENDICULAR_X = -6.75;
 //    public static double PERPENDICULAR_Y = 4.25;
 
-    public static double PARALLEL_X = -6.75; // -6.75
-    public static double PARALLEL_Y = -4.25; // -4.25
-    public static double PERPENDICULAR_X = -6.75; // -6.75
-    public static double PERPENDICULAR_Y = -4.25; // 4.25
-
+    public static double PARALLEL_X = -7.425; // -6.75
+    public static double PARALLEL_Y = -3.985; // -4.25
+    public static double PERPENDICULAR_X = -6.65; // -6.75
+    public static double PERPENDICULAR_Y = 2.7; // 4.25
+    // vert = parallel
+    // hori = perp
+    // x y swapped
+    // parallel x offset = -3.985
+    // parallel y offset = -7.425
+    // perp x offset = 2.7
+    // perp y offset = -6.65
 
     public static Pose currentPosition;
     public static Pose startPosition;
@@ -126,12 +131,6 @@ public class Odometry extends TwoTrackingWheelLocalizer {
     public void setStart(Pose start) {
         currentPosition = start;
         startPosition = currentPosition;
-        setPoseEstimate(new Pose2d(currentPosition.x, currentPosition.y, currentPosition.heading));
-    }
-
-    public void setGlobalPosition(Point newPos) {
-        currentPosition.x = newPos.x;
-        currentPosition.y = newPos.y;
         setPoseEstimate(new Pose2d(currentPosition.x, currentPosition.y, currentPosition.heading));
     }
 
