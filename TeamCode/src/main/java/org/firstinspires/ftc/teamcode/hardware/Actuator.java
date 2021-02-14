@@ -4,7 +4,7 @@ import org.openftc.revextensions2.ExpansionHubServo;
 
 public class Actuator {
     public ExpansionHubServo actuator;
-    public static final double pushVal = 0.5;
+    public static final double pushVal = 0.55;
     public static final double pullVal = 0.2;
     public Actuator(ExpansionHubServo actuator) {
         this.actuator = actuator;

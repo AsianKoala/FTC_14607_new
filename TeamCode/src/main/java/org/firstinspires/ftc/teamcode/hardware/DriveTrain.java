@@ -31,9 +31,9 @@ public class DriveTrain extends Hardware {
     private void applyMovement() {
         // remember that motors on the right side are flipped (or maybe left i forgot)
         // https://www.vexforum.com/uploads/default/original/2X/c/c7963dec531b7e893ddcf91c4fc9159928c4b56c.jpeg
-        double rawFrontLeft = movementY - movementX - movementTurn;
-        double rawBackLeft = movementY - movementX + movementTurn;
-        double rawFrontRight =  -movementY - movementX + movementTurn;
+        double rawFrontLeft = -movementY + movementX + movementTurn;
+        double rawBackLeft = -movementY - movementX + movementTurn;
+        double rawFrontRight =  -movementY + movementX - movementTurn;
         double rawBackRight =  -movementY - movementX - movementTurn;
         double[] powers = {rawFrontLeft, rawFrontRight, rawBackLeft, rawBackRight};
 

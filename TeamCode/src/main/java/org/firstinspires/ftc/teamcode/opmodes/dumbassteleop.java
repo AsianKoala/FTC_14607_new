@@ -21,6 +21,7 @@ public class dumbassteleop extends stupidrobot {
         controlIntakeTransferPower();
         controlLauncher();
         controlActuator();
+        controlWobbleGoal();
     }
 
     public void controlJoystickMovement() {
@@ -66,6 +67,21 @@ public class dumbassteleop extends stupidrobot {
         }
         if(gamepad1.y) {
             actuator.reset();
+        }
+    }
+
+    public void controlWobbleGoal() {
+        if(gamepad1.dpad_up) {
+            wobbleGoal.in();
+        }
+        if(gamepad1.dpad_down) {
+            wobbleGoal.out();
+        }
+        if(gamepad1.dpad_left) {
+            wobbleGoal.grab();
+        }
+        if(gamepad1.dpad_right) {
+            wobbleGoal.release();
         }
     }
 }
