@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.movement.PPController;
 import org.firstinspires.ftc.teamcode.util.Pose;
 
 
-@Autonomous(name="ParkAuto")
+@Autonomous(name="park auto")
 public class ParkAuto extends Auto {
     public enum stateMachineStates {
         park,

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.control.Auto;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 
 import static org.firstinspires.ftc.teamcode.movement.PPController.*;
 
+@Autonomous(name="auto")
 public class MainAuto extends Auto {
 
     private enum programStates {

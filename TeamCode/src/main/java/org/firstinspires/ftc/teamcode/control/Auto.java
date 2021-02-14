@@ -19,7 +19,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 
 import static org.firstinspires.ftc.teamcode.movement.Odometry.currentPosition;
 
-public abstract class Auto extends stupidrobot {
+public abstract class Auto extends Robot {
 
     public static class RingDetectorPipeline extends OpenCvPipeline {
         int colorComponentNum;

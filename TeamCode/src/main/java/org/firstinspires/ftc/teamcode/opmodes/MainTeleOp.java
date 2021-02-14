@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.control.stupidrobot;
+import org.firstinspires.ftc.teamcode.control.Robot;
 import org.firstinspires.ftc.teamcode.hardware.DriveTrain;
 import org.firstinspires.ftc.teamcode.movement.Odometry;
 import org.firstinspires.ftc.teamcode.util.MathUtil;
@@ -11,7 +11,7 @@ import static org.firstinspires.ftc.teamcode.movement.PPController.goToPosition;
 import static org.firstinspires.ftc.teamcode.movement.PPController.pointAngle;
 
 @TeleOp(name = "teleop")
-public class MainTeleOp extends stupidrobot {
+public class MainTeleOp extends Robot {
 
     private boolean goToShootingPoint = false;
     private boolean turnReached = false;

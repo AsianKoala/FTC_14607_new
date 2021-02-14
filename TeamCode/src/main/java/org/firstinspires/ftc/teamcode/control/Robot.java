@@ -20,7 +20,7 @@ import org.firstinspires.ftc.teamcode.util.MathUtil;
 import org.openftc.revextensions2.ExpansionHubMotor;
 import org.openftc.revextensions2.ExpansionHubServo;
 
-public class stupidrobot extends TunableOpMode {
+public class Robot extends TunableOpMode {
     public DriveTrain driveTrain;
     public Intake intake;
     public IntakeTransfer intakeTransfer;
