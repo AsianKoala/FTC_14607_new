@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.util.Range;
 import org.openftc.revextensions2.ExpansionHubMotor;
 
 public class IntakeTransfer extends Hardware {
-    private final ExpansionHubMotor mover;
+    public final ExpansionHubMotor mover;
     private double moverPower;
     public IntakeTransfer(ExpansionHubMotor mover) {
         this.mover = mover;

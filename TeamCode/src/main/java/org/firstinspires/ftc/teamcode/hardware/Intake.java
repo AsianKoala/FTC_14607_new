@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.hardware;
 import org.openftc.revextensions2.ExpansionHubMotor;
 
 public class Intake extends Hardware {
-    private final ExpansionHubMotor intake;
+    public final ExpansionHubMotor intake;
     private double intakePower;
     public Intake(ExpansionHubMotor intake) {
         this.intake = intake;

@@ -51,5 +51,14 @@ public class stupidrobot extends OpMode {
         intake.update();
         intakeTransfer.update();
         shooter.update();
+        getOdomTelem();
+    }
+
+
+    public void getOdomTelem() {
+        double horizontalOdometry = intakeTransfer.mover.getCurrentPosition();
+        double verticalOdometry = intake.intake.getCurrentPosition();
+        telemetry.addLine("vertical: " + verticalOdometry);
+        telemetry.addLine("horizontal: " + horizontalOdometry);
     }
 }
