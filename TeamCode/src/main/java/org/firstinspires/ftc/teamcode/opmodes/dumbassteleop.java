@@ -19,10 +19,12 @@ public class dumbassteleop extends stupidrobot {
         controlJoystickMovement();
         controlIntakePower();
         controlIntakeTransferPower();
+        controlLauncher();
+        controlActuator();
     }
 
     public void controlJoystickMovement() {
-        double driveScale = 0.5 + (gamepad1.right_bumper ? 0.5 : 0) - (gamepad1.left_bumper ? 0.2 : 0);
+        double driveScale = 0.5;
         DriveTrain.movementY = -gamepad1.left_stick_y * driveScale;
         DriveTrain.movementX = gamepad1.left_stick_x * driveScale;
         DriveTrain.movementTurn = -gamepad1.right_stick_x * driveScale;
@@ -45,6 +47,25 @@ public class dumbassteleop extends stupidrobot {
             intakeTransfer.reverse();
         } else {
             intakeTransfer.turnOff();
+        }
+    }
+
+    public void controlLauncher() {
+        if(gamepad1.a) {
+            shooter.turnOn();
+        } else if(gamepad1.b) {
+            shooter.reverse();
+        } else {
+            shooter.turnOff();
+        }
+    }
+
+    public void controlActuator() {
+        if(gamepad1.x) {
+            actuator.push();
+        }
+        if(gamepad1.y) {
+            actuator.reset();
         }
     }
 }
